@@ -10,6 +10,14 @@ type Message {
   author: String!
 }
 
+input MessageInput {
+  title: String!
+  content: String!
+  author: String!
+}
+
 type Mutation {
-  createMessage(title: String!, content: String, author: String!): Message
+  createMessage(message: MessageInput): Message
+  updateMessage(_id: ID, message: MessageInput): Message
+  deleteMessage(_id: ID): Message
 }

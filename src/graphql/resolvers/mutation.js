@@ -1,9 +1,20 @@
 import Message from "../../models/message";
 
 const Mutation = {
-  createMessage: async (_, { title, content, author }) => {
-    const newMessage = new Message({ title, content, author });
+  createMessage: async (_, { message }) => {
+    const newMessage = new Message(message);
     return await newMessage.save();
+  },
+
+  deleteMessage: async (_, { _id }) => {
+    const deleteMessage = await Message.findByIdAndDelete(_id);
+    return deleteMessage;
+  },
+  updateMessage: async (_, { _id, message }) => {
+    const newMessage = await Message.findByIdAndUpdate(_id, message, {
+      new: true,
+    });
+    return newMessage;
   },
 };
 
