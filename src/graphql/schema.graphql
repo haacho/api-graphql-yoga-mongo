@@ -1,10 +1,11 @@
 type Query {
   ping: String!
   messages: [Message!]
+  getMessage(_id: String!): Message
 }
 
 type Message {
-  _id: ID!
+  _id: String!
   title: String!
   content: String!
   author: String!
@@ -18,6 +19,6 @@ input MessageInput {
 
 type Mutation {
   createMessage(message: MessageInput): Message
-  updateMessage(_id: ID, message: MessageInput): Message
-  deleteMessage(_id: ID): Message
+  deleteMessage(_id: String): Message
+  updateMessage(_id: String, message: MessageInput): Message
 }

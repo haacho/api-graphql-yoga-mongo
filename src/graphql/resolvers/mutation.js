@@ -10,6 +10,7 @@ const Mutation = {
     const deleteMessage = await Message.findByIdAndDelete(_id);
     return deleteMessage;
   },
+
   updateMessage: async (_, { _id, message }) => {
     const newMessage = await Message.findByIdAndUpdate(_id, message, {
       new: true,
